@@ -1,5 +1,6 @@
 #!/usr/bin/groovy
 
+@NonCPS
 def call(allSpecs, testSplits, splitCount) {
   // 1. Get the list of all specs and list of specs run in last build
   allSpecs = allSpecs.collect { it.toString() }
@@ -19,7 +20,7 @@ def call(allSpecs, testSplits, splitCount) {
 
   // 3. Split specs newly added this time evenly
   def remainingSpecs = allSpecs - lastBuildSpecs
-  Collections.shuffle(remainingSpecs)
+  Collections.shuffle(remainingSpecs.toList())
   remainingSpecs = remainingSpecs.collate(remainingSpecs.size.intdiv(splitCount))
   if (remainingSpecs.size == splitCount + 1) {
     remainingSpecs[0] += remainingSpecs[splitCount]
