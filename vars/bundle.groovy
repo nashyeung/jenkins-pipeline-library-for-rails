@@ -1,6 +1,6 @@
 #!/usr/bin/groovy
 
-def bundle(envs, bundleArgs='', needUnstashGemfile=false) {
+def call(envs, bundleArgs='', needUnstashGemfile=false) {
   if (needUnstashGemfile) {
     unstash 'Gemfile'
   }

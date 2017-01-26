@@ -1,6 +1,6 @@
 #!/usr/bin/groovy
 
-def wellSplitSpecs(allSpecs, testSplits, splitCount) {
+def call(allSpecs, testSplits, splitCount) {
   // 1. Get the list of all specs and list of specs run in last build
   allSpecs = allSpecs.collect { it.toString() }
   def lastBuildSpecs = []
